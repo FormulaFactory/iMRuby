@@ -37,10 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00795C9810B09251F08A6235 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		049CB2FD0FFCB00FB29EA46C /* iMRuby.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = iMRuby.podspec; path = ../iMRuby.podspec; sourceTree = "<group>"; };
+		00795C9810B09251F08A6235 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		049CB2FD0FFCB00FB29EA46C /* iMRuby.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = iMRuby.podspec; path = ../iMRuby.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		226BC9CD61377BF8B68A4E49 /* Pods-iMRuby_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMRuby_Example.debug.xcconfig"; path = "Target Support Files/Pods-iMRuby_Example/Pods-iMRuby_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		3F56B08A46ADD1A8F18977F0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		3F56B08A46ADD1A8F18977F0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* iMRuby_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMRuby_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -193,7 +193,6 @@
 				84555A14B33DBB5D775B84CC /* Pods-iMRuby_Tests.debug.xcconfig */,
 				FD3755E2C26C8AB364FA2E69 /* Pods-iMRuby_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -259,6 +258,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

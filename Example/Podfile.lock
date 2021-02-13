@@ -1,0 +1,23 @@
+PODS:
+  - iMRuby (0.1.0)
+  - Kiwi (3.0.0)
+
+DEPENDENCIES:
+  - iMRuby (from `../`)
+  - Kiwi
+
+SPEC REPOS:
+  trunk:
+    - Kiwi
+
+EXTERNAL SOURCES:
+  iMRuby:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  iMRuby: 3a19b8d853e07524adb4eab062f4e7213f0b6dd3
+  Kiwi: fbeafef0f00e4d8f7dcb3420a4930afe70af77f7
+
+PODFILE CHECKSUM: 946d0717c1a877682bb0527c076bb2437511c789
+
+COCOAPODS: 1.8.4
