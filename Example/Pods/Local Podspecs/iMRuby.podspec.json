@@ -1,22 +1,27 @@
 {
   "name": "iMRuby",
   "version": "0.1.0",
-  "summary": "A short description of iMRuby.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/ping.cao/iMRuby",
+  "summary": "iMRuby is a bridge between ObjC with Ruby(Mruby)",
+  "description": "iMRuby is a bridge between ObjC with Ruby(Mruby),\nlike JavascriptCore framework.",
+  "homepage": "https://github.com/tailang/iMRuby",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "ping.cao": "pingcao@clubfactory.com"
+    "ping.cao": "caopingcpu@163.com"
   },
   "source": {
-    "git": "https://github.com/ping.cao/iMRuby.git",
+    "git": "https://github.com/tailang/iMRuby.git",
     "tag": "0.1.0"
   },
   "platforms": {
     "ios": "9.0"
   },
-  "source_files": "iMRuby/Classes/**/*"
+  "source_files": "iMRuby/Classes/**/*",
+  "dependencies": {
+    "MRubyFramework": [
+      "2.1.2"
+    ]
+  }
 }

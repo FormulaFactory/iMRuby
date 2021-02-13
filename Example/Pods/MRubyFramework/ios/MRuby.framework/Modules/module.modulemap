@@ -1,0 +1,11 @@
+framework module MRuby {
+umbrella header "mruby-umbrella.h"
+exclude header "debug.h"
+exclude header "boxing_no.h"
+exclude header "boxing_nan.h"
+exclude header "boxing_word.h"
+exclude header "opcode.h"
+exclude header "ops.h"
+export *
+module * { export * }
+}

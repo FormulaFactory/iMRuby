@@ -365,10 +365,12 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iMRuby_Example/Pods-iMRuby_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MRubyFramework/MRubyFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/iMRuby/iMRuby.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRubyFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iMRuby.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

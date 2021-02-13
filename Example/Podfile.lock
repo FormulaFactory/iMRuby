@@ -1,6 +1,8 @@
 PODS:
-  - iMRuby (0.1.0)
+  - iMRuby (0.1.0):
+    - MRubyFramework (= 2.1.2)
   - Kiwi (3.0.0)
+  - MRubyFramework (2.1.2)
 
 DEPENDENCIES:
   - iMRuby (from `../`)
@@ -9,14 +11,16 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Kiwi
+    - MRubyFramework
 
 EXTERNAL SOURCES:
   iMRuby:
     :path: "../"
 
 SPEC CHECKSUMS:
-  iMRuby: 3a19b8d853e07524adb4eab062f4e7213f0b6dd3
+  iMRuby: fa069d37882d2a96646d5bb44fb616a5d1277a31
   Kiwi: fbeafef0f00e4d8f7dcb3420a4930afe70af77f7
+  MRubyFramework: dd95303716dc4820dcfe4cb0b31c1812d9228d53
 
 PODFILE CHECKSUM: 946d0717c1a877682bb0527c076bb2437511c789
 
