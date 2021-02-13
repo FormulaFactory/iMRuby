@@ -27,7 +27,7 @@ FOUNDATION_EXPORT Class get_klass(mrb_state *mrb, mrb_value mrb_cocoa_klass);
 
 + (mrb_value)generateMRBKlass:(Class)klass context:(MRBContext *)context;
 
-+ (id)getKlass:(mrb_value)mrbKlass context:(MRBContext *)context;
++ (nullable id)getKlass:(mrb_value)mrbKlass context:(MRBContext *)context;
 
 @end
 

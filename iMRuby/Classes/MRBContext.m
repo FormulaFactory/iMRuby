@@ -38,7 +38,7 @@ static mrb_value register_func_call(mrb_state *mrb, mrb_value mrb_obj_self) {
     }
     
     if (!block) {
-        // 断言
+        // TODO: throw exception
         return mrb_nil_value();
     }
     
@@ -75,9 +75,11 @@ static mrb_value cocoa_export_methods(mrb_state *mrb, mrb_value mrb_obj_self) {
     NSMutableArray *args = [[NSMutableArray alloc] initWithCapacity:argc];
     SEL selector = NULL;
     NSMethodSignature *sign;
+    NSString *methodName;
     for (int i=0; i < argc; i++) {
         mrb_value mrbv = argv[i];
         id obj = [MRBValue convertToObjectWithMrbValue:mrbv inContext:context];
+        methodName = obj;
         if (i==0) { // method_name
             selector = NSSelectorFromString(obj);
             if (mrbTarget.isObject) {
@@ -91,7 +93,7 @@ static mrb_value cocoa_export_methods(mrb_state *mrb, mrb_value mrb_obj_self) {
     }
     
     if (!sign) {
-        // 断言报错
+        // TODO: throw exception
         return mrb_nil_value();
     }
     
@@ -135,7 +137,7 @@ static mrb_value require_cocoa(mrb_state *mrb, mrb_value mrb_obj_self) {
     mrb_close(mrb);
 }
 
-+ (MRBContext *)getMRBContextWithMrb:(mrb_state *)mrb
++ (nullable MRBContext *)getMRBContextWithMrb:(mrb_state *)mrb
 {
     __block MRBContext *currentContext = nil;
     @synchronized(NSObject.class) {
@@ -208,7 +210,7 @@ static mrb_value require_cocoa(mrb_state *mrb, mrb_value mrb_obj_self) {
     if (![block_class_name isEqualToString:@"__NSGlobalBlock__"] &&
         ![block_class_name isEqualToString:@"__NSMallocBlock__"] &&
         ![block_class_name isEqualToString:@"__NSStackBlock__"]) {
-        // 断言
+        // TODO: throw exception
         return NO;
     }
     

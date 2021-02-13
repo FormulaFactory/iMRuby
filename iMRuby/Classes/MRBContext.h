@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (readonly) mrb_state *current_mrb;
 
-+ (MRBContext *)getMRBContextWithMrb:(mrb_state *)mrb;
++ (nullable MRBContext *)getMRBContextWithMrb:(mrb_state *)mrb;
 - (void)mrbyException;
 
 @end

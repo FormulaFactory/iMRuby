@@ -22,9 +22,9 @@ FOUNDATION_EXPORT mrb_value proc_to_block(mrb_state *mrb, mrb_value mrb_obj_self
 
 @interface MRBBlockValue : NSObject
 + (mrb_value)generateMRBBlock:(id)block context:(MRBContext *)context;
-+ (id)getBlock:(mrb_value)mrbBlock context:(MRBContext *)context;
++ (nullable id)getBlock:(mrb_value)mrbBlock context:(MRBContext *)context;
 
-+ (NSMethodSignature *)getSignatureWithBlock:(id)block;
++ (nullable NSMethodSignature *)getSignatureWithBlock:(id)block;
 
 @end
 

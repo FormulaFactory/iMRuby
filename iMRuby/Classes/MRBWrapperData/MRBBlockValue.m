@@ -173,13 +173,13 @@ mrb_value block_call(mrb_state *mrb, mrb_value mrb_obj_self) {
     return generate_block(context.current_mrb, block);
 }
 
-+ (id)getBlock:(mrb_value)mrbBlock context:(MRBContext *)context
++ (nullable id)getBlock:(mrb_value)mrbBlock context:(MRBContext *)context
 {
     return get_block(context.current_mrb, mrbBlock);
 }
 
 #pragma mark -
-+ (NSMethodSignature *)getSignatureWithBlock:(id)block{
++ (nullable NSMethodSignature *)getSignatureWithBlock:(id)block{
     struct MRBBlockLiteral *blockRef = (__bridge struct MRBBlockLiteral *)block;
     MRBBlockDescriptionFlags _flags = blockRef->flags;
     if (_flags & MRBBlockDescriptionFlagsHasSignature) {

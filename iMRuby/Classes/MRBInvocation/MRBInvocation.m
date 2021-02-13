@@ -24,7 +24,7 @@
     _arguments = arguments;
 }
 
-- (id)invokeAndReturn
+- (nullable id)invokeAndReturn
 {
     // sub class
     return nil;
@@ -84,7 +84,7 @@
     }
 }
 
-- (id)getReturnValue:(const char *)returnType inv:(NSInvocation *)inv
+- (nullable id)getReturnValue:(const char *)returnType inv:(NSInvocation *)inv
 {
     id ret;
     switch (returnType[0]) {

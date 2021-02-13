@@ -48,7 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (MRBValue *)valueWithObject:(id)object inContext:(MRBContext *)context;
 + (MRBValue *)valueWithKlass:(Class)klass inContext:(MRBContext *)context;
 + (MRBValue *)valueWithArray:(NSArray *)array inContext:(MRBContext *)context;
-// 暂时只支持NSString作为key的dict
+//暂时支持SString作为key的dict
 + (MRBValue *)valuewithDictionary:(NSDictionary *)dict inContext:(MRBContext *)context;
 + (MRBValue *)valueWithPoint:(CGPoint)point inContext:(MRBContext *)context;
 + (MRBValue *)valueWithSize:(CGSize)size inContext:(MRBContext *)context;
@@ -62,12 +62,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (int64_t)toInt64;
 - (uint64_t)toUInt64;
 - (double)toDouble;
-- (nullable NSDate *)toDate;
-- (nullable id)toBlock;
-- (id)toObject;
-- (Class)toKlass;
-- (nullable NSArray *)toArray;
-- (nullable NSDictionary *)toDict;
+- (nullable nullable NSDate *)toDate;
+- (nullable nullable id)toBlock;
+- (nullable id)toObject;
+- (nullable Class)toKlass;
+- (nullable nullable NSArray *)toArray;
+- (nullable nullable NSDictionary *)toDict;
 - (CGPoint)toPoint;
 - (CGSize)toSize;
 - (CGRect)toRect;
@@ -98,8 +98,8 @@ NS_ASSUME_NONNULL_BEGIN
 // mrb_value to MRBValue
 + (MRBValue *)valueWithMrbValue:(mrb_value)mrb_value inContext:(MRBContext *)context;
 
-// helper method
-+ (MRBValue *)convertToMRBValueWithObj:(id)obj inContext:(MRBContext *)context;
+// convert helper method
++ (nullable MRBValue *)convertToMRBValueWithObj:(id)obj inContext:(MRBContext *)context;
 + (id)convertToObjectWithMrbValue:(mrb_value)mrbValue inContext:(MRBContext *)context;
 @end
 

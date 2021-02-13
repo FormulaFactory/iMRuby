@@ -18,13 +18,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 - (instancetype)initWithTarget:(id)target sign:(NSMethodSignature *)sign;
-- (id)invokeAndReturn;
+- (nullable id)invokeAndReturn;
 
 - (void)setArgument:(id)arg
             argType:(const char *)argType
               index:(NSInteger)index
                 inv:(NSInvocation *)inv;
-- (id)getReturnValue:(const char *)returnType inv:(NSInvocation *)inv;
+- (nullable id)getReturnValue:(const char *)returnType inv:(NSInvocation *)inv;
 @end
 
 NS_ASSUME_NONNULL_END

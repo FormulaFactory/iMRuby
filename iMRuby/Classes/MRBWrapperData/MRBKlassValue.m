@@ -77,7 +77,7 @@ id get_klass(mrb_state *mrb, mrb_value mrb_cocoa_klass) {
     return generate_klass(context.current_mrb, klass);
 }
 
-+ (id)getKlass:(mrb_value)mrbKlass context:(MRBContext *)context
++ (nullable id)getKlass:(mrb_value)mrbKlass context:(MRBContext *)context
 {
     return get_klass(context.current_mrb, mrbKlass);
 }

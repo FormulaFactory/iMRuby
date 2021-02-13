@@ -27,7 +27,7 @@ FOUNDATION_EXPORT id get_object(mrb_state *mrb, mrb_value mrb_cocoa_object);
 @interface MRBObjectValue : NSObject
 
 + (mrb_value)generateMRBObject:(id)object context:(MRBContext *)context;
-+ (id)getObject:(mrb_value)mrbObject context:(MRBContext *)context;
++ (nullable id)getObject:(mrb_value)mrbObject context:(MRBContext *)context;
 
 @end
 

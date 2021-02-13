@@ -152,7 +152,7 @@
     mrb_value mrb_hash_value = mrb_hash_new(context.current_mrb);
     [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         if (![key isKindOfClass:[NSString class]]) {
-            //断言
+            // TODO: throw exception
             dictValid = NO;
         }
         mrb_value hash_key = mrb_str_new_cstr(context.current_mrb, [(NSString *)key UTF8String]);
@@ -216,7 +216,7 @@
 
 #pragma mark - helper methods
 
-+ (MRBValue *)convertToMRBValueWithObj:(id)obj inContext:(MRBContext *)context
++ (nullable MRBValue *)convertToMRBValueWithObj:(id)obj inContext:(MRBContext *)context
 {
     if ([obj isKindOfClass:[NSValue class]]) {
          const char* type = [(NSValue *)obj objCType];
@@ -319,7 +319,7 @@
 
 #pragma mark - MRBContext(mrb) -> cocoa
 
-- (NSString *)toString
+- (nullable NSString *)toString
 {
     enum mrb_vtype type = mrb_type(mrbValue);
     if (type != MRB_TT_STRING && type != MRB_TT_SYMBOL) {
@@ -339,7 +339,7 @@
     }
 }
 
-- (NSNumber *)toNumber
+- (nullable NSNumber *)toNumber
 {
     // Fixnum Float boolean
     enum mrb_vtype type = mrb_type(mrbValue);
@@ -398,7 +398,7 @@
     return mrb_float(mrbValue);
 }
 
-- (NSDate *)toDate
+- (nullable NSDate *)toDate
 {
     mrb_value mrb_time = self.mrb_value;
     enum mrb_vtype type = mrb_type(mrb_time);
@@ -418,25 +418,25 @@
     return nil;
 }
 
-- (id)toBlock
+- (nullable id)toBlock
 {
     mrb_value mrb_block = self.mrb_value;
     return [MRBBlockValue getBlock:mrb_block context:self.context];
 }
 
-- (id)toObject;
+- (nullable id)toObject;
 {
     mrb_value mrb_object = self.mrb_value;
     return [MRBObjectValue getObject:mrb_object context:self.context];
 }
 
-- (Class)toKlass
+- (nullable Class)toKlass
 {
     mrb_value mrb_klass = self.mrb_value;
     return [MRBKlassValue getKlass:mrb_klass context:self.context];
 }
 
-- (NSArray *)toArray
+- (nullable NSArray *)toArray
 {
     mrb_value mrb_ary = self.mrb_value;
     enum mrb_vtype type = mrb_type(mrb_ary);
@@ -454,7 +454,7 @@
     return array;
 }
 
-- (NSDictionary *)toDict
+- (nullable NSDictionary *)toDict
 {
     mrb_value mrb_hash = self.mrb_value;
     if (!mrb_hash_p(mrb_hash)) {
@@ -476,12 +476,11 @@
 - (CGPoint)toPoint
 {
     if (!self.isDict) {
-        // 断言
+        // TODO: throw exception
         return CGPointZero;
     }
     mrb_state *mrb = self.context.current_mrb;
     if (mrb_hash_size(mrb, mrbValue) != 2) {
-        //
         return CGPointZero;
     }
     mrb_value x = mrb_str_new_cstr(mrb, "x");
@@ -512,12 +511,10 @@
 - (CGSize)toSize
 {
     if (!self.isDict) {
-        // 断言
         return CGSizeZero;
     }
     mrb_state *mrb = self.context.current_mrb;
     if (mrb_hash_size(mrb, mrbValue) != 2) {
-        //
         return CGSizeZero;
     }
     mrb_value width = mrb_str_new_cstr(mrb, "width");
@@ -546,12 +543,10 @@
 - (CGRect)toRect
 {
     if (!self.isDict) {
-        // 断言
         return CGRectZero;
     }
     mrb_state *mrb = self.context.current_mrb;
     if (mrb_hash_size(mrb, mrbValue) != 4) {
-        //
         return CGRectZero;
     }
     mrb_value x = mrb_str_new_cstr(mrb, "x");
@@ -600,12 +595,10 @@
 - (NSRange)toRange
 {
     if (!self.isDict) {
-        //直接报错 or 断言
         return NSMakeRange(0, 0);
     }
     mrb_state *mrb = self.context.current_mrb;
     if (mrb_hash_size(mrb, mrbValue) != 2) {
-        //
         return NSMakeRange(0, 0);
     }
     

@@ -23,5 +23,6 @@
     "MRubyFramework": [
       "2.1.2"
     ]
-  }
+  },
+  "vendored_libraries": "iMRuby/Classes/MRBLibffi/libffi.a"
 }

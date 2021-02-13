@@ -94,7 +94,7 @@ id get_object(mrb_state *mrb, mrb_value mrb_cocoa_object) {
     return generate_object(context.current_mrb, object);
 }
 
-+ (id)getObject:(mrb_value)mrbObject context:(MRBContext *)context
++ (nullable id)getObject:(mrb_value)mrbObject context:(MRBContext *)context
 {
     return get_object(context.current_mrb, mrbObject);
 }
