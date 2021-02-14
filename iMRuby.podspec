@@ -24,6 +24,10 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
 
   s.source_files = 'iMRuby/Classes/**/*'
+
+  s.resource_bundles = {
+       'iMRuby' => ['iMRuby/Assets/**/*']
+  }
   
   s.dependency 'MRubyFramework', '2.1.2'
 

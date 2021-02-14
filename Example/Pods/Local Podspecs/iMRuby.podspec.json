@@ -19,6 +19,11 @@
     "ios": "9.0"
   },
   "source_files": "iMRuby/Classes/**/*",
+  "resource_bundles": {
+    "iMRuby": [
+      "iMRuby/Assets/**/*"
+    ]
+  },
   "dependencies": {
     "MRubyFramework": [
       "2.1.2"

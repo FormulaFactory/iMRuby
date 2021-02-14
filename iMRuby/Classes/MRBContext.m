@@ -302,7 +302,9 @@ static mrb_value require_cocoa(mrb_state *mrb, mrb_value mrb_obj_self) {
 
 - (void)loadMainRuby
 {
-    NSString *mainPath = [[NSBundle mainBundle] pathForResource:@"main" ofType:@"rb"];
+    NSBundle *mainBundle = [NSBundle bundleForClass:[self class]];
+    NSBundle *resourceBundle = [NSBundle bundleWithPath:[mainBundle pathForResource:@"iMRuby" ofType:@"bundle"]];
+    NSString *mainPath = [resourceBundle pathForResource:@"main" ofType:@"rb"];
     NSError *error;
     NSString *mainScript = [NSString stringWithContentsOfFile:mainPath encoding:NSUTF8StringEncoding error:&error];
     if (error) {

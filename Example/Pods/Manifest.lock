@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  iMRuby: c4a29c8f472d24347166540f6c89b8f24e4ab3c4
+  iMRuby: 4dc976d3a24133a15ba847bc0f4179a102c2c90a
   Kiwi: fbeafef0f00e4d8f7dcb3420a4930afe70af77f7
   MRubyFramework: dd95303716dc4820dcfe4cb0b31c1812d9228d53
 

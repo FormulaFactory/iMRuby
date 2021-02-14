@@ -7,8 +7,11 @@
 //
 
 #import "MRBViewController.h"
+@import iMRuby;
 
 @interface MRBViewController ()
+
+@property (nonatomic, strong) MRBContext *context;
 
 @end
 
@@ -17,7 +20,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    self.context = [[MRBContext alloc] init];
+    MRBValue *value = [self.context evaluateScript:@"a = \"I am from ruby\""];
+    NSString *string = value.toString;
+    NSLog(@"%@", string);
 }
 
 - (void)didReceiveMemoryWarning
