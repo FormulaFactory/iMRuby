@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		35BB0CF1756F462DE01AE592 /* Pods_iMRuby_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F54C8AA5B20A64E7E190EAA /* Pods_iMRuby_Tests.framework */; };
 		5612436BBA8E9ED3BD9B832D /* Pods_iMRuby_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB8929E07C9D691CFD914F4 /* Pods_iMRuby_Example.framework */; };
+		5C26BCDF25D9784400DC4757 /* view.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5C26BCDE25D9784400DC4757 /* view.rb */; };
+		5C26BCE325DA25C100DC4757 /* demo.rb in Resources */ = {isa = PBXBuildFile; fileRef = 5C26BCE225DA25C100DC4757 /* demo.rb */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -41,6 +43,8 @@
 		049CB2FD0FFCB00FB29EA46C /* iMRuby.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = iMRuby.podspec; path = ../iMRuby.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		226BC9CD61377BF8B68A4E49 /* Pods-iMRuby_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMRuby_Example.debug.xcconfig"; path = "Target Support Files/Pods-iMRuby_Example/Pods-iMRuby_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		3F56B08A46ADD1A8F18977F0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		5C26BCDE25D9784400DC4757 /* view.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = view.rb; sourceTree = "<group>"; };
+		5C26BCE225DA25C100DC4757 /* demo.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = demo.rb; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* iMRuby_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMRuby_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -140,6 +144,8 @@
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				5C26BCDE25D9784400DC4757 /* view.rb */,
+				5C26BCE225DA25C100DC4757 /* demo.rb */,
 			);
 			name = "Example for iMRuby";
 			path = iMRuby;
@@ -278,6 +284,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C26BCE325DA25C100DC4757 /* demo.rb in Resources */,
+				5C26BCDF25D9784400DC4757 /* view.rb in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
