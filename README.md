@@ -6,18 +6,8 @@ iMRuby is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'iMRuby', :git => 'git@github.com:tailang/iMRuby.git'
+pod 'iMRuby'
 ```
-
-podfile
-```ruby
- post_install do |installer|
-    installer.pods_project.build_configuration_list.build_configurations.each do |configuration|
-      configuration.build_settings['CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'] = 'YES'
-    end
-  end
-```
-
 ## Author
 
 ping.cao

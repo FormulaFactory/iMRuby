@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'iMRuby'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'iMRuby is a bridge between ObjC with Ruby(Mruby)'
 
   s.description      = <<-DESC
@@ -28,6 +28,8 @@ Pod::Spec.new do |s|
   s.resource_bundles = {
        'iMRuby' => ['iMRuby/Assets/**/*']
   }
+
+  s.pod_target_xcconfig = {"CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES" => "YES", 'VALID_ARCHS' => 'x86_64 armv7 arm64' }
   
   s.dependency 'MRubyFramework', '2.1.2'
 
