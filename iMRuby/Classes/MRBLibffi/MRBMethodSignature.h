@@ -16,8 +16,10 @@
 @property (nonatomic, readonly) NSArray *argumentTypes;
 @property (nonatomic, readonly) NSString *returnType;
 
+- (instancetype)initWithObjCTypes:(NSString *)objCTypes;
 - (instancetype)initWithBlockTypeNames:(NSString *)typeNames;
-
 + (ffi_type *)ffiTypeWithEncodingChar:(const char *)c;
+
++ (NSString *)typeEncodeWithTypeName:(NSString *)typeName;
 
 @end

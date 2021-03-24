@@ -11,6 +11,7 @@
 #import <objc/runtime.h>
 #import "MRBBlockInvocation.h"
 #import "MRBMethodInvocation.h"
+#import "MRBCFunc.h"
 
 static NSHashTable *_mRBContextHashTable;
 
@@ -18,6 +19,7 @@ static NSHashTable *_mRBContextHashTable;
 
 @property (class, atomic, strong) NSHashTable *mRBContextHashTable;
 @property (nonatomic, strong) NSMutableDictionary <NSString *, id> *registerFuncs;
+@property (nonatomic, strong) NSMutableDictionary <NSString *, NSString *> *defineCFuncs;
 
 @end
 
@@ -121,6 +123,52 @@ static mrb_value require_cocoa(mrb_state *mrb, mrb_value mrb_obj_self) {
     return mrb_nil_value();
 }
 
+static mrb_value define_cfunc(mrb_state *mrb, mrb_value mrb_obj_self) {
+    
+    MRBContext *context = [MRBContext getMRBContextWithMrb:mrb];
+    
+    char *name;
+    char *encode;
+    mrb_get_args(mrb, "zz", &name ,&encode);
+    NSString *encodeStr = [MRBCFunc getEncodeStrWithTypes:[NSString stringWithCString:encode encoding:NSUTF8StringEncoding]];
+    NSString *cfuncName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
+    
+    if (!encodeStr || !cfuncName) {
+        return mrb_false_value();
+    }
+    
+    [context.defineCFuncs setObject:encodeStr forKey:cfuncName];
+    return mrb_true_value();
+}
+
+static mrb_value cfunc_call(mrb_state *mrb, mrb_value mrb_obj_self) {
+    // ruby --> objc --> ffi --> ffi return --> objc --> ruby
+    MRBContext *context = [MRBContext getMRBContextWithMrb:mrb];
+    
+    mrb_value *argv = mrb_get_argv(mrb);
+    mrb_int argc = mrb_get_argc(mrb);
+    NSMutableArray *args = [[NSMutableArray alloc] initWithCapacity:argc];
+    NSString *funcName;
+    
+    for (int i=0; i < argc; i++) {
+        mrb_value mrbv = argv[i];
+        id obj = [MRBValue convertToObjectWithMrbValue:mrbv inContext:context];
+        if (i==0) { // func_name
+            funcName = obj;
+        } else {
+            [args addObject:obj];
+        }
+    }
+    
+    id ret = [MRBCFunc callCFunc:funcName args:args encode:[context.defineCFuncs objectForKey:funcName]];
+    if (!ret) {
+        return mrb_nil_value();
+    }
+    
+    MRBValue *mrbValue = [MRBValue convertToMRBValueWithObj:ret inContext:context];
+    return mrbValue.mrb_value;
+}
+
 @implementation MRBContext {
     mrb_state *mrb;
     mrbc_context *ctx;
@@ -158,6 +206,7 @@ static mrb_value require_cocoa(mrb_state *mrb, mrb_value mrb_obj_self) {
     self = [super init];
     if (!self) return nil;
     _registerFuncs = [[NSMutableDictionary alloc] init];
+    _defineCFuncs = [[NSMutableDictionary alloc] init];
     [[[self class] mRBContextHashTable] addObject:self];
     mrb = mrb_open();
     ctx = mrbc_context_new(mrb);
@@ -337,6 +386,11 @@ static mrb_value require_cocoa(mrb_state *mrb, mrb_value mrb_obj_self) {
     // proc
     struct RClass *mrb_proc_class = mrb_class_get(mrb, "Proc");
     mrb_define_method(mrb, mrb_proc_class, "to_cocoa_block", proc_to_block, MRB_ARGS_REQ(1));
+    
+    // define c func
+    mrb_define_module_function(mrb, mrb_cocoa_modlue, "define_cfunc", define_cfunc, MRB_ARGS_REQ(2));
+    // call c func
+    mrb_define_module_function(mrb, mrb_cocoa_modlue, "cfunc_call", cfunc_call, MRB_ARGS_ANY());
 
 }
 @end

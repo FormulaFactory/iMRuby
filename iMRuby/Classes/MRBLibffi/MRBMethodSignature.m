@@ -16,6 +16,15 @@
     BOOL _isBlock;
 }
 
+- (instancetype)initWithObjCTypes:(NSString *)objCTypes
+{
+    self = [super init];
+    if (self) {
+        _types = objCTypes;
+        [self _parse];
+    }
+    return self;
+}
 
 - (instancetype)initWithBlockTypeNames:(NSString *)typeNames
 {
