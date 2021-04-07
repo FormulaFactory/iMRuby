@@ -77,6 +77,11 @@
             [inv setArgument:&arg atIndex:index];
             break;
         }
+        case ':': {
+            SEL sel = NSSelectorFromString(arg);
+            [inv setArgument:&sel atIndex:index];
+            break;
+        }
             
         default:
             NSAssert(NO, @"not surport type: %@", [NSString stringWithCString:argType encoding:NSUTF8StringEncoding]);

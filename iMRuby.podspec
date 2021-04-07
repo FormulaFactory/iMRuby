@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
 
   s.pod_target_xcconfig = {"CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES" => "YES", 'VALID_ARCHS' => 'x86_64 armv7 arm64' }
   
-  s.dependency 'MRubyFramework', '2.1.2'
+  s.dependency 'MRubyFramework', '2.1.2.1'
 
   s.vendored_library = 'iMRuby/Classes/MRBLibffi/libffi.a'
 end

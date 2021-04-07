@@ -1,11 +1,11 @@
 module MRBCocoa
-    
+    # oc register method in MRBCocoa
     def self.method_missing(method_name, *args)
         self.register_func_call(method_name, *args)
     end
     
     class Block
-        # call method will be defined by c api
+        # call method will be defined by c api 
         # def call;;end
     end
     
