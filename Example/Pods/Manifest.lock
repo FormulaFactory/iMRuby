@@ -1,8 +1,8 @@
 PODS:
-  - iMRuby (0.1.0):
-    - MRubyFramework (= 2.1.2)
+  - iMRuby (0.1.1):
+    - MRubyFramework (= 2.1.2.1)
   - Kiwi (3.0.0)
-  - MRubyFramework (2.1.2)
+  - MRubyFramework (2.1.2.1)
 
 DEPENDENCIES:
   - iMRuby (from `../`)
@@ -18,10 +18,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  iMRuby: 4dc976d3a24133a15ba847bc0f4179a102c2c90a
+  iMRuby: c4df0b735e3fd9dc973bbc4ef75c6cd09a74f182
   Kiwi: fbeafef0f00e4d8f7dcb3420a4930afe70af77f7
-  MRubyFramework: dd95303716dc4820dcfe4cb0b31c1812d9228d53
+  MRubyFramework: 015e0229e3b68272ffeee970a3d490efd5e72193
 
 PODFILE CHECKSUM: e94dc32f5a63b18c50cbf5efcf802c9d1361fbae
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.1

@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "MRBCFunc.h"
 #import "MRBContext.h"
 #import "MRBBlockInvocation.h"
 #import "MRBInvocation.h"
