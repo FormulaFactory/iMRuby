@@ -74,7 +74,10 @@ static void
 cocoa_block_destructor(mrb_state *mrb, void *p) {
     struct MRBCocoaBlockWrapper *block = p;
     CFRelease(block->p);
-    mrb_free(mrb, p);
+   // ⚠️when invoke mrb_close, get error:
+   // malloc: *** error for object 0x600001b42f80: pointer being freed was not allocated
+   // so don't invoke mrb_free
+   // mrb_free(mrb, p);
 }
 
 static struct mrb_data_type *
