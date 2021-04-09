@@ -16,8 +16,11 @@ describe(@"Test OC <-> Ruby", ^{
     
     context(@"type conversion", ^{
         
-       __block MRBContext *mrbContext = [[MRBContext alloc] init];
-        
+        __block MRBContext *mrbContext;
+        beforeAll(^{
+            mrbContext = [[MRBContext alloc] init];
+        });
+                
         it(@"ruby nil -> OC nil or NSNull", ^{
             MRBValue *mrbRet = [mrbContext evaluateScript:@"nil"];
             [[theValue(mrbRet.isNil) should] beYes];
@@ -109,7 +112,7 @@ describe(@"Test OC <-> Ruby", ^{
     
     context(@"OC call ruby method", ^{
         __block MRBContext *mrbContext;
-        
+    
         beforeEach(^{
             mrbContext = [[MRBContext alloc] init];
         });
