@@ -314,7 +314,7 @@ void MRBBlockInterpreter(ffi_cif *cif, void *ret, void **args, void *userdata) {
             case '#': {
                 
                 id retObj = [MRBValue convertToObjectWithMrbValue:returnValue.mrb_value inContext:procToBlock.context];
-                if ([retObj isKindOfClass:[NSValue class]]) {
+                if ([retObj isKindOfClass:[NSValue class]] && ![retObj isKindOfClass:[NSNumber class]]) {
                      const char* type = [(NSValue *)retObj objCType];
                     
             #define MRB_BLOCK_RET_STRUCT(_objCType, _type, _selector) \
