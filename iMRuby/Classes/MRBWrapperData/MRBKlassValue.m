@@ -14,7 +14,7 @@ static mrb_data_type *cocoa_klass_type;
 static void
 cocoa_klass_destructor(mrb_state *mrb, void *p) {
     struct MRBCocoaKlassWrapper *klass = p;
-    CFRelease(klass);
+    CFRelease(klass->p);
     mrb_free(mrb, p);
 }
 

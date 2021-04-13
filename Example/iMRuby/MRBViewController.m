@@ -9,26 +9,38 @@
 #import "MRBViewController.h"
 @import iMRuby;
 
-@interface Person : NSObject
+int sumx(int a, int b) {
+    int c = a + b;
+    return c;
+}
+
+@interface Person()
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) int age;
-- (NSString *)__say_something:(NSString *)message;
-- (void)coding:(NSString *)code finished:(BOOL(^)(NSString *name, int age))finished;
+
 @end
 @implementation Person
+
+- (NSString *)saySth:(NSString *)message
+{
+    return message;
+}
+
+- (NSString *)say_sth:(NSString *)message
+{
+    return message;
+}
+
 - (NSString *)__say_something:(NSString *)message
 {
-    NSLog(@"%@", message);
-    return [self.name stringByAppendingString:message];
+    return message;
 }
-- (void)coding:(NSString *)code finished:(BOOL(^)(NSString *name, int age))finished
+- (NSString *)finished:(NSString*(^)(NSString *name, int age))finished
 {
-    NSLog(@"I am coding %@", code);
-    if (finished) {
-        BOOL f = finished(self.name, self.age);
-        NSLog(@"Block return value: %@", @(f));
-    }
+    NSString *f = finished(self.name, self.age);
+    return [@"hi," stringByAppendingString:f];
 }
+
 @end
 
 @interface MRBViewController ()
@@ -52,43 +64,7 @@
     [self.context evaluateScript:script];
     MRBValue *superView = [MRBValue valueWithObject:self.view inContext:self.context];
     [self.context callFunc:@"create_view" args:@[superView]];
-    
-    // evaluateScript
-    [self.context evaluateScript:@"puts \"Happy Niu year!\""];
-    
-    // exception
-   // [self.context evaluateScript:@"happy_nui_year(2021)"];
-    
-    // 注册Const给ruby使用
-//    [self.context registerConst:@"Niu" value:@"Happy Niu year!"];
-//    [self.context evaluateScript:@"puts MRBCocoa::Const::Niu"];
 
-    // 注册方法
-//    [self.context registerFunc:@"happy_niu_year" block:^NSInteger(int a, int b){
-//        NSLog(@"start...");
-//        int sum = a + b;
-//        NSLog(@"finish...");
-//        return sum;
-//    }];
-//    MRBValue *sum = [self.context evaluateScript:@"MRBCocoa.happy_niu_year(2020,1)"];
-//    NSInteger niu_year = sum.toInt64;
-//    NSLog(@"%@", @(niu_year));
-    
-    // 下标注册常量或者方法
-    self.context[@"Niu"] = @"Happy Niu year!";
-    self.context[@"happy_niu_year"] = ^NSInteger(int a, int b) {
-        NSLog(@"start...");
-        int sum = a + b;
-        NSLog(@"finish...");
-        return sum;
-    };
-    MRBValue *sum = [self.context evaluateScript:@"puts MRBCocoa::Const::Niu;MRBCocoa.happy_niu_year(2020,1)"];
-    NSInteger niu_year = sum.toInt64;
-    NSLog(@"%@", @(niu_year));
-    
-    NSString *demoScriptPath = [[NSBundle mainBundle] pathForResource:@"demo" ofType:@"rb"];
-    NSString *demoScript = [NSString stringWithContentsOfFile:demoScriptPath encoding:NSUTF8StringEncoding error:nil];
-    [self.context evaluateScript:demoScript];
 }
 
 @end

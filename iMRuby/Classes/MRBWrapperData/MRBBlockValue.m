@@ -74,7 +74,10 @@ static void
 cocoa_block_destructor(mrb_state *mrb, void *p) {
     struct MRBCocoaBlockWrapper *block = p;
     CFRelease(block->p);
-    mrb_free(mrb, p);
+   // ⚠️when invoke mrb_close, get error:
+   // malloc: *** error for object 0x600001b42f80: pointer being freed was not allocated
+   // so don't invoke mrb_free
+   // mrb_free(mrb, p);
 }
 
 static struct mrb_data_type *
@@ -211,6 +214,7 @@ mrb_value block_call(mrb_state *mrb, mrb_value mrb_obj_self) {
 @property (nonatomic, strong) MRBMethodSignature *signature;
 @property (nonatomic, weak) MRBContext *context;
 @property (nonatomic, assign) mrb_value proc;
+@property (nonatomic, strong) id retVal; // retain return value
 
 @end
 
@@ -311,7 +315,7 @@ void MRBBlockInterpreter(ffi_cif *cif, void *ret, void **args, void *userdata) {
             case '#': {
                 
                 id retObj = [MRBValue convertToObjectWithMrbValue:returnValue.mrb_value inContext:procToBlock.context];
-                if ([retObj isKindOfClass:[NSValue class]]) {
+                if ([retObj isKindOfClass:[NSValue class]] && ![retObj isKindOfClass:[NSNumber class]]) {
                      const char* type = [(NSValue *)retObj objCType];
                     
             #define MRB_BLOCK_RET_STRUCT(_objCType, _type, _selector) \
@@ -328,6 +332,8 @@ void MRBBlockInterpreter(ffi_cif *cif, void *ret, void **args, void *userdata) {
                 } else {
                     void **retPtrPtr = ret;
                     *retPtrPtr = (__bridge void *)retObj;
+                    // fix: retObj be release
+                    procToBlock.retVal = retObj;
                 }
                 break;
             }
