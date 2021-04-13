@@ -214,6 +214,7 @@ mrb_value block_call(mrb_state *mrb, mrb_value mrb_obj_self) {
 @property (nonatomic, strong) MRBMethodSignature *signature;
 @property (nonatomic, weak) MRBContext *context;
 @property (nonatomic, assign) mrb_value proc;
+@property (nonatomic, strong) id retVal; // retain return value
 
 @end
 
@@ -331,6 +332,8 @@ void MRBBlockInterpreter(ffi_cif *cif, void *ret, void **args, void *userdata) {
                 } else {
                     void **retPtrPtr = ret;
                     *retPtrPtr = (__bridge void *)retObj;
+                    // fix: retObj be release
+                    procToBlock.retVal = retObj;
                 }
                 break;
             }
