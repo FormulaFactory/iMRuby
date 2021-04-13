@@ -8,6 +8,10 @@
 
 @import UIKit;
 
+@interface Person : NSObject
+
+@end
+
 @interface MRBViewController : UIViewController
 
 @end
