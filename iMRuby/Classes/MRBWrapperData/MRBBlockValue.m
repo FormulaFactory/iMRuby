@@ -114,7 +114,13 @@ generate_block(mrb_state *mrb, id block) {
     struct RClass *cocoa_module = mrb_module_get(mrb, "MRBCocoa");
     struct RClass *klass = mrb_class_get_under(mrb, cocoa_module, "Block");
     mrb_value mrb_cocoa_block = mrb_obj_value(Data_Wrap_Struct(mrb, klass, cocoa_block_type, wrapperBlock));
-    CFRetain(wrapperBlock->p);
+    
+    struct MRBBlockLiteral *blockRef = (__bridge struct MRBBlockLiteral *)block;
+   // ⚠️to_cocoa_block procToBlock 生成的block 引用计数已+1
+    if (blockRef->procToBlock == NULL || ![NSStringFromClass([((__bridge id)blockRef->procToBlock) class]) isEqualToString:@"MRBProcToBlock"]) {
+        CFRetain(wrapperBlock->p);
+    }
+    
     return mrb_cocoa_block;
 }
 
