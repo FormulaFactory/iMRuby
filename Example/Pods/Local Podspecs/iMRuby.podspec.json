@@ -1,9 +1,9 @@
 {
   "name": "iMRuby",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "summary": "iMRuby is a bridge between ObjC with Ruby(Mruby)",
   "description": "iMRuby is a bridge between ObjC with Ruby(Mruby),\nlike JavascriptCore framework.",
-  "homepage": "https://github.com/tailang/iMRuby",
+  "homepage": "https://github.com/FormulaFactory/iMRuby",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,8 +12,8 @@
     "ping.cao": "caopingcpu@163.com"
   },
   "source": {
-    "git": "https://github.com/tailang/iMRuby.git",
-    "tag": "0.1.1"
+    "git": "https://github.com/FormulaFactory/iMRuby.git",
+    "tag": "0.1.2"
   },
   "platforms": {
     "ios": "9.0"

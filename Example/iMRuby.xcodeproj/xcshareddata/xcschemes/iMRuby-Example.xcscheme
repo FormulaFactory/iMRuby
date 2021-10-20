@@ -41,9 +41,19 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0AB57121261EA52E0076ECB7"
+               BlueprintIdentifier = "5CC85A632720245A00F17BC8"
                BuildableName = "iMRuby_Tests.xctest"
                BlueprintName = "iMRuby_Tests"
+               ReferencedContainer = "container:iMRuby.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5CC85A8E2720261E00F17BC8"
+               BuildableName = "Tests.xctest"
+               BlueprintName = "Tests"
                ReferencedContainer = "container:iMRuby.xcodeproj">
             </BuildableReference>
          </TestableReference>
