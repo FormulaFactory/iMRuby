@@ -31,18 +31,18 @@ Ruby and OC are converted to each other
 | CGRect  |  specific Hash {'x' => 1, 'y' => 1, 'width' => 1, 'height' => 1}|
 | NSRange  | specific Hash {'location' => 0, 'length' => 1} |
 
-create `MRBContext` instance
+#### create `MRBContext` instance
 ``` objective-c
 self.context = [[MRBContext alloc] init];
 ```
 
-run ruby script
+#### run ruby script
 ``` objective-c
 [self.context evaluateScript:@"puts \"Happy Niu year!\""];
 # => Happy Niu year!
 ```
 
-catch exception
+#### catch exception
 ``` objective-c
 self.context.exceptionHandler = ^(NSError * _Nonnull exception) {
         NSLog(@"%@", exception.userInfo[@"msg"]);
@@ -51,14 +51,14 @@ self.context.exceptionHandler = ^(NSError * _Nonnull exception) {
 # => undefined method 'happy_niu_year' (NOMethodError)
 ```
 
-register constant
+#### register constant
 ``` objective-c
 [self.context registerConst:@"Niu" value:@"Happy Niu year!"];
 [self.context evaluateScript:@"puts MRBCocoa::Const::Niu"];
 # => Happy Niu year!
 ```
 
-register method
+#### register method
 ``` objective-c
 [self.context registerFunc:@"happy_niu_year" block:^NSInteger(int a, int b){
     NSLog(@"start...");
@@ -74,7 +74,7 @@ register method
 # => 2021
 ```
 
-register method or constant by subscript
+#### register method or constant by subscript
 ``` objective-c
 self.context[@"Niu"] = @"Happy Niu year!";
 self.context[@"happy_niu_year"] = ^NSInteger(int a, int b) {
@@ -88,7 +88,7 @@ NSInteger niu_year = sum.toInt64;
 NSLog(@"%@", @(niu_year));
 ```
 
-ruby invoke OC object method
+#### ruby invoke OC object method
 ``` objective-c
 // OC .m file
 @interface Person : NSObject
@@ -129,7 +129,7 @@ person.coding_finished_("Ruby", finished_block)
 
 ```
 
-invoke OC method rules:  
+#### invoke OC method rules:  
 1. replace ':' with '_'
 ```
 - (NSString *)saySomething:(NSString *)message;
