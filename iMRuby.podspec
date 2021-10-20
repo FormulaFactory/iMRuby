@@ -16,10 +16,10 @@ Pod::Spec.new do |s|
   like JavascriptCore framework.
                        DESC
 
-  s.homepage         = 'https://github.com/tailang/iMRuby'
+  s.homepage         = 'https://github.com/FormulaFactory/iMRuby'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'ping.cao' => 'caopingcpu@163.com' }
-  s.source           = { :git => 'https://github.com/tailang/iMRuby.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/FormulaFactory/iMRuby.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '9.0'
 
