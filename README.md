@@ -9,6 +9,9 @@ it, simply add the following line to your Podfile:
 pod 'iMRuby'
 ```
 
+## Class UML
+![class_uml](./class_uml.png)
+
 ## Usage
 iMRuby usage is like JavascriptCore of iOS.
 [aticle url](https://mp.weixin.qq.com/s?__biz=MzkxMjAxNDI1MQ==&mid=2247483661&idx=1&sn=f20222c330af17a27d203e913073f710&chksm=c1122fc9f665a6dfb0fa720535e59257fe640b4c4abe4f324eaeca38919f6b2cf2ea68ce5e62&token=658452920&lang=zh_CN#rd)
