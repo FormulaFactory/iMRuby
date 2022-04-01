@@ -61,10 +61,18 @@ int sumx(int a, int b) {
     self.context.exceptionHandler = ^(NSError * _Nonnull exception) {
         NSLog(@"%@", exception.userInfo[@"msg"]);
     };
+    
+    [self.context registerConst:@"Target" value:self];
     [self.context evaluateScript:script];
     MRBValue *superView = [MRBValue valueWithObject:self.view inContext:self.context];
     [self.context callFunc:@"create_view" args:@[superView]];
+    
+}
 
+- (void)touchAction:(id)sender
+{
+    [self.context evaluateScript:@"showAlertView"];
 }
 
 @end
+
