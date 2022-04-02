@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'iMRuby'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'iMRuby is a bridge between ObjC with Ruby(Mruby)'
 
   s.description      = <<-DESC
