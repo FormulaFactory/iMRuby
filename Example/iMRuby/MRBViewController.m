@@ -54,7 +54,7 @@ int sumx(int a, int b) {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // 执行view.rb
+    // view.rb
     NSString *scriptPath = [[NSBundle mainBundle] pathForResource:@"view" ofType:@"rb"];
     NSString *script = [NSString stringWithContentsOfFile:scriptPath encoding:NSUTF8StringEncoding error:nil];
     self.context = [[MRBContext alloc] init];
@@ -66,7 +66,6 @@ int sumx(int a, int b) {
     [self.context evaluateScript:script];
     MRBValue *superView = [MRBValue valueWithObject:self.view inContext:self.context];
     [self.context callFunc:@"create_view" args:@[superView]];
-    
 }
 
 - (void)touchAction:(id)sender

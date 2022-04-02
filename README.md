@@ -20,7 +20,6 @@ Ruby and OC are converted to each other
 |  OC type   | Ruby type  |
 |  ----  | ----  |
 | nil | nil |
-| NSNull  | nil |
 | NSString  | string, symbol |
 | NSNumber  | Fixnum, Float, boolean |
 | NSDictionary  | Hash |
@@ -89,6 +88,18 @@ self.context[@"happy_niu_year"] = ^NSInteger(int a, int b) {
 MRBValue *sum = [self.context evaluateScript:@"puts MRBCocoa::Const::Niu;MRBCocoa.happy_niu_year(2020,1)"];
 NSInteger niu_year = sum.toInt64;
 NSLog(@"%@", @(niu_year));
+```
+
+#### OC invoke ruby method
+```ruby
+# ruby.rb
+def test_func(str)
+    puts str
+end
+```
+```objective-c
+    MRBValue *strParam = [MRBValue valueWithString:@"hello" inContext:self.context];
+    [self.context callFunc:@"test_func" args:@[strParam]];
 ```
 
 #### ruby invoke OC object method

@@ -17,9 +17,19 @@ describe(@"Test OC <-> Ruby", ^{
             mrbContext = nil;
         });
                 
-        it(@"ruby nil -> OC nil or NSNull", ^{
+        it(@"ruby nil -> OC nil", ^{
             MRBValue *mrbRet = [mrbContext evaluateScript:@"nil"];
             [[theValue(mrbRet.isNil) should] beYes];
+        });
+        
+        it(@"ruby nil -> OC nil", ^{
+            MRBValue *mrbRet = [mrbContext evaluateScript:@"nil"];
+            [[mrbRet.toNil should] beNil];
+        });
+        
+        it(@"ruby NSNull -> OC NSNull", ^{
+            MRBValue *mrbRet = [mrbContext evaluateScript:@"require_cocoa 'NSNull';NSNull.null"];
+            [[[mrbRet.toObject class] should] equal:NSNull.class];
         });
 
         it(@"ruby string -> OC NSString", ^{

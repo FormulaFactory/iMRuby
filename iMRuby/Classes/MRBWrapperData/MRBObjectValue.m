@@ -35,8 +35,7 @@ generate_object(mrb_state *mrb, id object) {
         return mrb_nil_value();
     }
     
-    if ([object isKindOfClass:NSNull.class] ||
-        [object isKindOfClass:NSString.class] ||
+    if ([object isKindOfClass:NSString.class] ||
         [object isKindOfClass:NSNumber.class] ||
         [object isKindOfClass:NSDictionary.class] ||
         [object isKindOfClass:NSArray.class] ||

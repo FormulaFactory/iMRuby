@@ -21,7 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 //Objective-C type  |   ruby type
 //--------------------+---------------------
 //      nil         |        nil
-//     NSNull       |        nil
 //    NSString      |   string, symbol
 //    NSNumber      |   Fixnum, Float, boolean
 //  NSDictionary    |   Hash
@@ -48,7 +47,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (MRBValue *)valueWithObject:(id)object inContext:(MRBContext *)context;
 + (MRBValue *)valueWithKlass:(Class)klass inContext:(MRBContext *)context;
 + (MRBValue *)valueWithArray:(NSArray *)array inContext:(MRBContext *)context;
-//暂时支持SString作为key的dict
 + (MRBValue *)valuewithDictionary:(NSDictionary *)dict inContext:(MRBContext *)context;
 + (MRBValue *)valueWithPoint:(CGPoint)point inContext:(MRBContext *)context;
 + (MRBValue *)valueWithSize:(CGSize)size inContext:(MRBContext *)context;
@@ -56,6 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (MRBValue *)valueWithRange:(NSRange)range inContext:(MRBContext *)context;
 
 // MRBValue to cocoa value
+- (nullable id)toNil;
 - (nullable NSString *)toString;
 - (nullable NSNumber *)toNumber;
 - (BOOL)toBool;
@@ -73,7 +72,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (CGRect)toRect;
 - (NSRange)toRange;
 
-// 如果 isNil是YES，可以根据自身需求当成nil或NSNull使用
 @property (readonly) BOOL isNil;
 @property (readonly) BOOL isString;
 @property (readonly) BOOL isNumber;
@@ -99,8 +97,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (MRBValue *)valueWithMrbValue:(mrb_value)mrb_value inContext:(MRBContext *)context;
 
 // convert helper method
-+ (nullable MRBValue *)convertToMRBValueWithObj:(id)obj inContext:(MRBContext *)context;
-+ (id)convertToObjectWithMrbValue:(mrb_value)mrbValue inContext:(MRBContext *)context;
++ (nullable MRBValue *)convertToMRBValueWithObj:(nullable id)obj inContext:(MRBContext *)context;
++ (nullable id)convertToObjectWithMrbValue:(mrb_value)mrbValue inContext:(MRBContext *)context;
 @end
 
 NS_ASSUME_NONNULL_END

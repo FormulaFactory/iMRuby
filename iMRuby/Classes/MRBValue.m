@@ -216,8 +216,12 @@
 
 #pragma mark - helper methods
 
-+ (nullable MRBValue *)convertToMRBValueWithObj:(id)obj inContext:(MRBContext *)context
++ (nullable MRBValue *)convertToMRBValueWithObj:(nullable id)obj inContext:(MRBContext *)context
 {
+    if (!obj) {
+        return [MRBValue valueNilInContext:context];
+    }
+    
     if ([obj isKindOfClass:[NSValue class]]) {
          const char* type = [(NSValue *)obj objCType];
         
@@ -290,10 +294,6 @@
         return [MRBValue valuewithDate:obj inContext:context];
     }
     
-    if ([obj isKindOfClass:[NSNull class]]) {
-        return [MRBValue valueNilInContext:context];
-    }
-    
     if ([obj isKindOfClass:[NSArray class]]) {
         return [MRBValue valueWithArray:obj inContext:context];
     }
@@ -318,6 +318,11 @@
 }
 
 #pragma mark - MRBContext(mrb) -> cocoa
+- (nullable id)toNil
+{
+    NSAssert(self.isNil, @"%@ is not nil!", self);
+    return nil;
+}
 
 - (nullable NSString *)toString
 {
@@ -615,9 +620,13 @@
     return NSMakeRange(0, 0);
 }
 
-+ (id)convertToObjectWithMrbValue:(mrb_value)mrbValue inContext:(MRBContext *)context
++ (nullable id)convertToObjectWithMrbValue:(mrb_value)mrbValue inContext:(MRBContext *)context
 {
     MRBValue *value = [MRBValue valueWithMrbValue:mrbValue inContext:context];
+    if (value.isNil) {
+        return nil;
+    }
+    
     if (value.isRect) {
         return [NSValue valueWithCGRect:value.toRect];
     }
@@ -632,10 +641,6 @@
     
     if (value.isRange) {
         return [NSValue valueWithRange:value.toRange];
-    }
-        
-    if (value.isNil) {
-        return [NSNull null];
     }
     
     if (value.isString) {
