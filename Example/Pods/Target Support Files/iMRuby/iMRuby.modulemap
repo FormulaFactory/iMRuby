@@ -1,6 +1,0 @@
-framework module iMRuby {
-  umbrella header "iMRuby-umbrella.h"
-
-  export *
-  module * { export * }
-}
