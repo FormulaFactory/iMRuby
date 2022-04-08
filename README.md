@@ -1,6 +1,6 @@
 ![log](./resources/logo.png)
 # iMRuby
-iMRuby is a bridge between ObjC with Ruby(Mruby)
+iMRuby is an engine that acts as a  bridge between Objective-C and Ruby(Mruby)
 
 ## Demo
 ![demo](./resources/demo.png)
