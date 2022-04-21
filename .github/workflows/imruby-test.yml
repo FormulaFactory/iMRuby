@@ -15,7 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install Dependencies
-        uses: |
+        run: |
           cd Example
           pod install --repo-update
       - name: Test
