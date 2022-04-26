@@ -3,7 +3,7 @@
 iMRuby is an engine that acts as a  bridge between Objective-C and Ruby(Mruby)
 
 ## Demo
-![demo](./resources/demo.png)
+<img src="./resources/demo.png" width = "293" height = "633" alt="demo" align=center />
 
 ``` objective-c
 // objective-c file
@@ -52,6 +52,7 @@ require_cocoa "UIFont"
 require_cocoa "UIButton"
 require_cocoa "UIAlertController"
 require_cocoa "UIAlertAction"
+require_cocoa "UIScrollView"
 
 def create_view(super_view)
     # Clolors
@@ -62,9 +63,20 @@ def create_view(super_view)
     white = UIColor.whiteColor
     
     super_view.setBackgroundColor_(white)
+    # ScrollView
+    bounds = super_view.bounds
+    scrollview = UIScrollView.alloc.init
+    scrollview.setUserInteractionEnabled_(true)
+    scrollview.setScrollenabled_(true)
+    scrollview.setFrame_(bounds)
+    scrollview.setContentSize_({'width' => bounds['width'], 'height' => bounds['height']+10})
+    scrollview.setBackgroundColor_(yellow)
+    super_view.addSubview_(scrollview)
+    
+    scrollview.addSubview_(createLabel("UIScrollView", 40, 20))
     
     # UIlabel
-    super_view.addSubview_(createLabel("UILabel", 40, 64))
+    scrollview.addSubview_(createLabel("UILabel", 40, 64))
     
     label = UILabel.alloc.init
     label.setFrame_({'x' => 200, 'y' => 64, 'width' => 150, 'height' => 50})
@@ -72,26 +84,26 @@ def create_view(super_view)
     label.setFont_(UIFont.systemFontOfSize_(24))
     label.setTextColor_(red)
     label.setBackgroundColor_(green)
-    super_view.addSubview_(label)
+    scrollview.addSubview_(label)
     
     # UIView
-    super_view.addSubview_(createLabel("UIView", 40, 120))
+    scrollview.addSubview_(createLabel("UIView", 40, 120))
     
     blue_sub_view = UIView.alloc.init
     blue_sub_view.setFrame_({'x' => 200, 'y' => 120, 'width' => 100, 'height' => 100})
     blue_sub_view.setBackgroundColor_(blue)
-    super_view.addSubview_(blue_sub_view)
+    scrollview.addSubview_(blue_sub_view)
     
     # UIImageView
-    super_view.addSubview_(createLabel("UIImageView", 40, 230))
+    scrollview.addSubview_(createLabel("UIImageView", 40, 230))
     
     image = UIImage.imageNamed_("logo")
     image_view = UIImageView.alloc.initWithImage_(image)
     image_view.setFrame_({'x'=>200, 'y'=> 230, 'width' => 100, 'height' => 100})
-    super_view.addSubview_(image_view)
+    scrollview.addSubview_(image_view)
     
     # UIButton
-    super_view.addSubview_(createLabel("UIButton", 40, 340))
+    scrollview.addSubview_(createLabel("UIButton", 40, 340))
 
     btn = UIButton.buttonWithType_(0)
     ## MRBCocoa::Const::Target is defined in OC
@@ -102,7 +114,7 @@ def create_view(super_view)
     btn.setTitle_forState_("Click to show alert", 0)
     btn.setFrame_({'x' => 200, 'y' => 340, 'width' => 170, 'height' => 50})
     btn.setBackgroundColor_(red)
-    super_view.addSubview_(btn)
+    scrollview.addSubview_(btn)
 end
 
 def showAlertView
@@ -128,7 +140,6 @@ def createLabel(text, x, y)
     label.setTextColor_(UIColor.blackColor)
     return label
 end
-
 ```
 
 ## Installation
